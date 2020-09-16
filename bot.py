@@ -27,23 +27,23 @@ client.remove_command("help")
 async def on_ready():
     await client.change_presence(activity=discord.Game(name="m.help"))
     print(client.user.name)
-    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).download_file("/command_usagetime.json", "json/command_usagetime.json")
+    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).download_file("command_usagetime.json", "json/command_usagetime.json")
 
 
 # error event
-# @client.event
-# async def on_command_error(ctx, error):
-#     if isinstance(error, commands.MissingRequiredArgument):
-#         await ctx.message.channel.send("Please pass in argument.")
+@client.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.message.channel.send("Please pass in argument.")
 
-#     if isinstance(error, commands.CommandNotFound):
-#         await ctx.message.channel.send("Command not found.")
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.message.channel.send("Command not found.")
 
-#     if isinstance(error, commands.MissingPermissions):
-#         await ctx.send("You do not have permission.")
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("You do not have permission.")
 
-#     if isinstance(error, commands.CommandInvokeError):
-#         await ctx.send("MCID/UUID not found.")
+    if isinstance(error, commands.CommandInvokeError):
+        await ctx.send("MCID/UUID not found.")
 
 
 # cogs load
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 @tasks.loop(seconds=3600)
 async def loop():
     print(f"loop upload - {JSTdt}")
-    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).upload_file("json/command_usagetime.json", "/command_usagetime.json")
+    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).upload_file("json/command_usagetime.json", "command_usagetime.json")
 
 
 loop.start()
