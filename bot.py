@@ -27,6 +27,7 @@ client.remove_command("help")
 async def on_ready():
     await client.change_presence(activity=discord.Game(name="m.help"))
     print(client.user.name)
+    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).download_file("command_usagetime.json", "json/command_usagetime.json")
 
 
 # error event
@@ -53,11 +54,6 @@ if __name__ == "__main__":
 
 
 # loop
-@tasks.loop(seconds=10, count=1)
-async def download():
-    print(f"start download - {JSTdt}")
-    s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).download_file("command_usagetime.json", "json/command_usagetime.json")
-
 @tasks.loop(hours=1)
 async def loop():
     print(f"loop upload - {JSTdt}")
