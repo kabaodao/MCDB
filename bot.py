@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
 
 # loop
-@tasks.loop(hours=1)
+@tasks.loop(seconds=3600)
 async def loop():
     print(f"loop upload - {JSTdt}")
     s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).upload_file("json/command_usagetime.json", "command_usagetime.json")
