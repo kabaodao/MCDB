@@ -31,19 +31,19 @@ async def on_ready():
 
 
 # error event
-@client.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.MissingRequiredArgument):
-        await ctx.message.channel.send("Please pass in argument.")
+# @client.event
+# async def on_command_error(ctx, error):
+#     if isinstance(error, commands.MissingRequiredArgument):
+#         await ctx.message.channel.send("Please pass in argument.")
 
-    if isinstance(error, commands.CommandNotFound):
-        await ctx.message.channel.send("Command not found.")
+#     if isinstance(error, commands.CommandNotFound):
+#         await ctx.message.channel.send("Command not found.")
 
-    if isinstance(error, commands.MissingPermissions):
-        await ctx.send("You do not have permission.")
+#     if isinstance(error, commands.MissingPermissions):
+#         await ctx.send("You do not have permission.")
 
-    if isinstance(error, commands.CommandInvokeError):
-        await ctx.send("MCID/UUID not found.")
+#     if isinstance(error, commands.CommandInvokeError):
+#         await ctx.send("MCID/UUID not found.")
 
 
 # cogs load
