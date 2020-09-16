@@ -60,6 +60,5 @@ async def loop():
     s3.Bucket(os.environ["AWS_S3_BUCKET_NAME"]).upload_file("json/command_usagetime.json", "command_usagetime.json")
 
 
-download.start()
 loop.start()
 client.run(os.environ["DISCORDBOT_TOKEN"])
