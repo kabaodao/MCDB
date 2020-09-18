@@ -24,7 +24,7 @@ class help_cog(commands.Cog):
                                                   "[minotar.net](https://minotar.net/) - Copyright 2018 axxim.net", inline=False)
         embed.add_field(name="Developed by", value="[@KabaoDao](https://twitter.com/KabaoDao)")
         embed.add_field(name="FeedBack", value="Pls send to `KabaoDao#7271`")
-        embed.add_field(name="Invite URL", value="[Click Here](https://discord.com/api/oauth2/authorize?client_id=748910923091279914&permissions=18496&scope=bot)")
+        embed.add_field(name="Invite URL", value="[Click Here](https://discord.com/oauth2/authorize?client_id=748910923091279914&permissions=26688&scope=bot)")
         await ctx.send(embed=embed)
 
     @commands.is_owner()
